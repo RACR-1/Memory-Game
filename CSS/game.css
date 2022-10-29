@@ -207,7 +207,7 @@ section main.game div.card div.front{
 }
 
 section main.game div.card div.back{
-    background-image: url(/IMAGES/back\ of\ card.jpg);
+    background-image: url(../IMAGES/back\ of\ card.jpg);
     background-size: contain;
     background-position: center;
 }
