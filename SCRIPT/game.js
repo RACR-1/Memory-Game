@@ -49,6 +49,7 @@ function begin_timer() {
     if (time == 40) {
       time = 0;
     }
+    if (time == 0) Reload_game();
   }, 1000);
 }
 
