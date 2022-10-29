@@ -126,7 +126,7 @@ function load_Game() {
 function create_Founded_card(card) {
   const fcard = document.createElement("div");
   fcard.classList.add("f-card");
-  fcard.style.backgroundImage = `url(/IMAGES/${card}.jpg)`;
+  fcard.style.backgroundImage = `url(../IMAGES/${card}.jpg)`;
   fcard.setAttribute("data-card", card);
   discoveredCard.appendChild(fcard);
 }
