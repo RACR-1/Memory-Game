@@ -135,7 +135,7 @@ function create_Cards(name) {
   const card = document.createElement("div");
   card.classList.add("card");
   card.innerHTML = ` 
-    <div class="face front" style="background-image: url(/IMAGES/${name}.jpg);"></div>
+    <div class="face front" style="background-image: url(../IMAGES/${name}.jpg);"></div>
     <div class="face back"></div>
   `;
   card.setAttribute("data-character", name);
