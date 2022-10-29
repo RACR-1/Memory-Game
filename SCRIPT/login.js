@@ -13,7 +13,7 @@ name.addEventListener("keydown", checkInput);
 
 form.addEventListener("submit", (event) => {
   localStorage.setItem("player", name.value.trim());
-  window.location.assign("../PAGES/game.html");
+  window.location.assign("./PAGES/game.html");
   event.preventDefault();
 });
 
