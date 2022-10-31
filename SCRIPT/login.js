@@ -13,10 +13,13 @@ name.addEventListener("keydown", checkInput);
 
 form.addEventListener("submit", (event) => {
   localStorage.setItem("player", name.value.trim());
-  /* window.location.assign("Memory-Game/PAGES/game.html"); */
-  window.location.assign(
-    "https://racr-1.github.io/Memory-Game/PAGES/game.html"
-  );
+  if (window.location.href.includes("racr")) {
+    window.location.assign(
+      "https://racr-1.github.io/Memory-Game/PAGES/game.html"
+    );
+  } else {
+    window.location.assign("/PAGES/game.html");
+  }
   event.preventDefault();
 });
 

@@ -5,6 +5,7 @@ const storageNames = document.querySelector(".storage-names");
 const points = document.querySelector(".div-points .points");
 const timer = document.querySelector(".span-time");
 const newGameButton = document.querySelector(".new-game-button");
+const playerNameAtTop = document.querySelector(".span-player");
 
 /* variables */
 const names = [
@@ -34,7 +35,7 @@ let endBeginTimer = 0;
 /* functions */
 
 function begin_timer() {
-  let time = 40;
+  let time = 10;
   const interval_id = setInterval(() => {
     timer.innerHTML = time;
     if (!endBeginTimer == 1) {
@@ -46,10 +47,12 @@ function begin_timer() {
       }, 1000);
       timer.innerHTML = "00";
     }
-    if (time == 40) {
-      time = 0;
+
+    if (time == -1) {
+      clearInterval(interval_id);
+      clear_Var_cards_Reveald(1, 1);
+      document.querySelectorAll(".reveal").length || Reload_game();
     }
-    if (time == 0) Reload_game();
   }, 1000);
 }
 
@@ -120,6 +123,8 @@ function load_Game() {
     .forEach((name) => {
       grid.append(create_Cards(name));
     });
+  playerNameAtTop.innerHTML = localStorage.player;
+  create_exclude_Name_Li();
 }
 
 /* NO Error */
@@ -165,6 +170,7 @@ function Using_FoundedCards_clean_Cards_To_New_Game() {
 function reset_Score_And_Renew_Timer() {
   score = 0;
   points.innerHTML = "0";
+  timer.innerHTML = "00";
   endBeginTimer = 1;
 }
 
@@ -181,4 +187,30 @@ function Reload_game() {
   clear_Var_cards_Reveald();
   delete_All_cards();
   load_Game();
+}
+
+/* Exclude storage name */
+
+function create_exclude_Name_Li() {
+  if (!document.querySelector(".delete-button")) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.classList.add("name");
+    a.innerHTML = localStorage.player;
+
+    const button = document.createElement("button");
+    button.classList.add("delete-button");
+    button.innerHTML = "X";
+    button.addEventListener("click", exclude_Self_Li_And_Name_On_Storage);
+
+    li.appendChild(a);
+    li.appendChild(button);
+    storageNames.appendChild(li);
+  }
+}
+
+function exclude_Self_Li_And_Name_On_Storage({ target }) {
+  target.parentNode.remove();
+  localStorage.removeItem("player");
+  playerNameAtTop.textContent = "no-name";
 }
