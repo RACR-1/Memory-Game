@@ -35,7 +35,7 @@ let endBeginTimer = 0;
 /* functions */
 
 function begin_timer() {
-  let time = 10;
+  let time = 50;
   const interval_id = setInterval(() => {
     timer.innerHTML = time;
     if (!endBeginTimer == 1) {
